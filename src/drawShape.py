@@ -13,27 +13,28 @@ savePhotoFile = '../photo/result'
 width = 500
 height = 500
 
-rectangleWidth = 150
-rectangleHeight = 150
+rectangleWidth1 = 150
+rectangleHeight1 = 150
 
 rectangleWidth2 = 190
 rectangleHeight2 = 190
 
+rectangleWidth3 = 230
+rectangleHeight3 = 230
+
 list_draw = []
 
-img = np.zeros((width, height, 3), np.uint8)
-img = cv.rectangle(img, ((int)(width / 2 - rectangleWidth), (int)(height / 2 - rectangleHeight)), ((int)(width / 2 + rectangleWidth), (int)(height / 2 + rectangleHeight)), (0, 255, 0), 3)
-# image_center = tuple(np.array(img.shape[1::-1]) / 2)
-img = ndimage.rotate(img, 45)
+center = np.zeros((width, height, 3), np.uint8)
 
-img = cv.rectangle(img, ((int)(width / 2 - rectangleWidth), (int)(height / 2 - rectangleHeight)), ((int)(width / 2 + rectangleWidth), (int)(height / 2 + rectangleHeight)), (0, 255, 0), 3)
+def drawShape(positionX, positionY, degree):
+    img = cv.rectangle(center, ((int)(width / 2 - positionX), (int)(height / 2 - positionY)), ((int)(width / 2 + positionX), (int)(height / 2 + positionY)), (0, 255, 0), 3)
+    return ndimage.rotate(img, degree)
 
-# if file not found
-if img is None:
-    sys.exit("Could not read the image.")
+center = drawShape(rectangleWidth2, rectangleHeight2, 30)
+center = drawShape(rectangleWidth3, rectangleHeight3, 45)
 
 # show image
-cv.imshow("Display window", img)
+cv.imshow("Display window", center)
 
 while(True):
     k = cv.waitKey(1)
