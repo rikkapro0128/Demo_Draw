@@ -1,8 +1,8 @@
 import cv2 as cv
 import time
 
-importVideoFile = 'video/demo'
-saveVideoFile = 'video/result'
+importVideoFile = '../video/demo'
+saveVideoFile = '../video/result'
 
 cap = cv.VideoCapture(importVideoFile + '/gaixinh.mp4')
 
