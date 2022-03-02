@@ -38,6 +38,8 @@ fig, axes = plt.subplots(nrows=rows, ncols=cols, figsize=(15,15))
 for i in range(rows):
     for j in range(cols):   
         if(count_img < num_image):     
+            axes[i, j].get_xaxis().set_visible(False)
+            axes[i, j].get_yaxis().set_visible(False)
             axes[i, j].imshow(img_arr[count_img])
             count_img += 1
         else: 
